@@ -17,6 +17,9 @@ export const TEMP_DIR = path.join(__dirname, '..', 'tmp')
 fs.mkdirSync(UPLOAD_DIR, { recursive: true })
 fs.mkdirSync(TEMP_DIR, { recursive: true })
 
+export const MAX_FILES = 100 // Maximum number of files
+export const MAX_FILE_SIZE = 256 * 1024 * 1024 // Maximum file size in bytes (256MB)
+
 const app: Express = express()
 // Disable the X-Powered-By header
 app.disable('x-powered-by')
@@ -43,8 +46,8 @@ app.use(
     tempFileDir: '../tmp/',
     // uriDecodeFileNames: false, Encode the file name in URL,
     createParentPath: true,
-    // Maximum file size in bytes (512 MB)
-    limits: { fileSize: 512 * 1024 * 1024 },
+    // Maximum file size in bytes
+    limits: { fileSize: MAX_FILE_SIZE },
     // Abort the request if the file exceeds the limit
     abortOnLimit: true,
     // Error message

@@ -1,5 +1,4 @@
 import { Router } from 'express'
-import sanitize from 'sanitize-filename'
 import { getFiles } from '@/modules/getFiles'
 import { uploadFiles } from '@/modules/uploadFiles'
 import { downloadFile } from '@/modules/downloadFile'

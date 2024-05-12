@@ -5,7 +5,7 @@ import { ExtendedUploadedFile } from '@/config/types'
 import sanitize from 'sanitize-filename'
 import { getMessage } from '@/utils/getMessage'
 import path from 'path'
-import { UPLOAD_DIR } from '@/config/app'
+import { MAX_FILES, UPLOAD_DIR } from '@/config/app'
 
 export const uploadFiles = async (req: Request, res: Response) => {
   if (!req.files || Object.keys(req.files).length === 0) {
@@ -13,6 +13,11 @@ export const uploadFiles = async (req: Request, res: Response) => {
     return res
       .status(400)
       .send(getMessage('en', 'uploadFiles', 'fileUploadSuccess'))
+  }
+  if (req.files && Object.keys(req.files).length > MAX_FILES) {
+    const errorMessage = getMessage('en', 'uploadFiles', 'maxFilesExceeded')
+    logger.error(errorMessage)
+    return res.status(400).send(errorMessage)
   }
   // In case if in files is a single file
   !Array.isArray(req.files.files) && (req.files.files = [req.files.files])

@@ -8,6 +8,7 @@ export const messages: LocaleMessages = {
     },
     uploadFiles: {
       noFilesUploaded: 'No files were uploaded.',
+      maxFilesExceeded: 'Maximum number of files exceeded.',
       fileUploadSuccess: 'File uploaded successfully.',
       fileInsertSuccess: (id: number) => `Inserted file with ID: ${id}`,
       fileInsertError: 'Error inserting file into database.',
