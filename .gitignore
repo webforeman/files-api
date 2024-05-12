@@ -1,0 +1,8 @@
+logs
+dist
+NOTES.md
+.env
+uploads
+node_modules
+tmp
+.DS_Store
