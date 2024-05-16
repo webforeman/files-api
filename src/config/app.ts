@@ -43,7 +43,7 @@ app.use(
   fileUpload({
     // Use temporary files instead of memory for managing the upload process
     useTempFiles: true,
-    tempFileDir: '../tmp/',
+    tempFileDir: '/tmp/',
     // uriDecodeFileNames: false, Encode the file name in URL,
     createParentPath: true,
     // Maximum file size in bytes
