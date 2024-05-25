@@ -29,6 +29,16 @@ export const uploadFiles = async (req: Request, res: Response) => {
 
     const insertPromises = uploadedFiles.map(async (file, id) => {
       if (!Array.isArray(file)) {
+        // Filter file extension (zip yet)
+        if (path.extname(file.name).toLowerCase() !== '.zip') {
+          const errorMessage = getMessage(
+            'en',
+            'uploadFiles',
+            'invalidFileType'
+          )
+          logger.error(errorMessage)
+          return res.status(400).send(errorMessage)
+        }
         // If file is not an array, process a single file
         if (!Array.isArray(fileNames) && !Array.isArray(filesLastModified)) {
           fileNames = [fileNames]

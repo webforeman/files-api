@@ -14,6 +14,7 @@ export const messages: LocaleMessages = {
       fileInsertError: 'Error inserting file into database.',
       fileProcessError: 'Error processing files.',
       uploadError: 'Error uploading file.',
+      invalidFileType: 'Invalid file type.',
     },
     getFiles: {
       fetchSuccess: 'Files fetched successfully.',
