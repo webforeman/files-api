@@ -13,6 +13,7 @@ export const messages: LocaleMessages = {
       fileInsertSuccess: (id: number) => `Inserted file with ID: ${id}`,
       fileInsertError: 'Error inserting file into database.',
       fileProcessError: 'Error processing files.',
+      uploadError: 'Error uploading file.',
     },
     getFiles: {
       fetchSuccess: 'Files fetched successfully.',

@@ -11,10 +11,9 @@ import { decodeUriComponentSafe } from '@/utils/decodeUri'
 export const uploadFiles = async (req: Request, res: Response) => {
   try {
     if (!req.files || Object.keys(req.files).length === 0) {
-      logger.error(getMessage('en', 'uploadFiles', 'fileUploadSuccess'))
-      return res
-        .status(400)
-        .send(getMessage('en', 'uploadFiles', 'fileUploadSuccess'))
+      const errorMessage = getMessage('en', 'uploadFiles', 'uploadError')
+      logger.error(errorMessage)
+      return res.status(400).send(errorMessage)
     }
     if (req.files && Object.keys(req.files).length > MAX_FILES) {
       const errorMessage = getMessage('en', 'uploadFiles', 'maxFilesExceeded')
